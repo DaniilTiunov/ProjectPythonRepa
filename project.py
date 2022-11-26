@@ -1,4 +1,7 @@
+import pandas as pd
 
-a = input('Введите первое число: ')
-b = input('введите второе число: ')
-print('Сумма чисел равна: ',int(a+b))
+df = pd.read_excel('C:\Users\студент\Desktop\417\ProjectTripleS\ProjectTripleS\Repa\ProjectPythonRepa\439_2frem.xls')
+
+type(df)
+
+
