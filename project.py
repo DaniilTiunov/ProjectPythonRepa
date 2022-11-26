@@ -10,6 +10,7 @@ datatable = pd.read_excel('439_2frem.xls')
 window = tk.Tk()                                                 
 window.geometry("700x400")
 window.title('Приложение для расчета показателей инвестиционного анализа предприятия')
+window.resizable(False, False)
 
 frame1 = tk.LabelFrame(window)                                       # фрейм для создания ещё трёх кнопок :\
 frame1.place(height = 250, width = 370, rely = 0.03, relx = 0.45)
