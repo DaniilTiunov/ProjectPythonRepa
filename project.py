@@ -22,16 +22,22 @@ def button_Click():                     #Функция создания окн�
     window.title(Text)
     window.geometry("700x400")
 
+def close_window():
+    window2.destroy()
+
 def buttonPlan():
     window2 = Tk()                                 #Создание окна для инвестиционного плана
     window2.title("Список активов")                 
     window2.geometry("500x300")
-    buttonClose = tk.Button(window2, text = "Закрыть")
-    buttonClose.place(rely = 0.3, relx = 0.8, height = 20, width = 80)
+    buttonClose = tk.Button(window2, text = "Закрыть",  command = close_window)  # Создание кнопок
+    buttonClose.place(rely = 0.3, relx = 0.8, height = 20, width = 90)
+    buttonClose.pack()
     buttonQuest = tk.Button(window2, text = "Справка")
-    buttonQuest.place(rely = 0.2, relx = 0.8, height = 20, width = 80)
+    buttonQuest.place(rely = 0.2, relx = 0.8, height = 20, width = 90)
     buttonRead = tk.Button(window2, text = "Редактировать")
-    buttonRead.place(rely = 0.1, relx = 0.8, height = 20, width = 80)
+    buttonRead.place(rely = 0.1, relx = 0.8, height = 20, width = 90)
+    activList = tk.Label(window2, text = "Список активов: ")
+    activList.pack(anchor = NW)
     text = Text(window2 ,width=20, height=30)        #Создание многострочного поля ввода
     text.pack(side=LEFT)
     scroll = Scrollbar(window2, command=text.yview)        #Создание скролбара
@@ -43,13 +49,10 @@ def on_enter_frame(e):
     e.widget['background'] = 'grey40'
 def on_leave_frame(e):
     e.widget['background'] = 'grey30'
-
 def on_enter_win(e):
     e.widget['background'] = 'grey40'
 def on_leave_win(e):
     e.widget['background'] = 'grey20'
-
-
 
 button_frame = tk.Button(frame1, text = "Календарный план", bg='grey30', 
     fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
