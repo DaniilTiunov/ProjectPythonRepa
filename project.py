@@ -4,12 +4,13 @@ from tkinter import *
 import numpy as np
 from openpyxl import Workbook
 
+
 datatable = pd.read_excel('439_2frem.xls')
 
 window = tk.Tk()
 window.title('Table')
 label = Label(window, text = datatable)
-label.grid(column = 0, row = 0)
+label.grid(column = 15, row = 10)
 
 
 
