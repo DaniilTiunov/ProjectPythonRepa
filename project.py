@@ -1,7 +1,11 @@
 import pandas as pd
+from openpyxl import Workbook
 
-df = pd.read_excel('C:\Users\студент\Desktop\417\ProjectTripleS\ProjectTripleS\Repa\ProjectPythonRepa\439_2frem.xls')
+
+wb = Workbook()
+df = pd.read_excel('439_2frem.xls', engine = 'openpyxl')
+
+
+
 
 type(df)
-
-
