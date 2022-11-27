@@ -22,28 +22,44 @@ def button_Click():                     #Функция создания окн�
     window.title(Text)
     window.geometry("700x400")
 
-def close_window():
-    window2.destroy()
+
 
 def buttonPlan():
-    window2 = Tk()                                 #Создание окна для инвестиционного плана
-    window2.title("Список активов")                 
-    window2.geometry("500x300")
-    buttonClose = tk.Button(window2, text = "Закрыть",  command = close_window)  # Создание кнопок
+    button_frame = tk.Button(frame1, text = "Календарный план", bg='grey30', 
+    fg='white', activebackground="grey10", activeforeground="white", command = listActive)
+    button_frame.place(rely = 0.03, relx = 0.3, height = 50, width = 200,)
+    button_frame.bind('<Enter>', on_enter_frame)
+    button_frame.bind('<Leave>', on_leave_frame)
+    button_frame2 = tk.Button(frame1, text = "Ресурсы", bg='grey30', 
+    fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
+    button_frame2.place(rely = 0.39, relx = 0.3, height = 50, width = 200)
+    button_frame2.bind('<Enter>', on_enter_frame)
+    button_frame2.bind('<Leave>', on_leave_frame)
+    button_frame3 = tk.Button(frame1, text = "Список активов", bg='grey30', 
+    fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
+    button_frame3.place(rely = 0.75, relx = 0.3, height = 50, width = 200)
+    button_frame3.bind('<Enter>', on_enter_frame)
+    button_frame3.bind('<Leave>', on_leave_frame)
+
+def listActive():
+    window3 = Tk()
+    window3.title(Text)
+    window3.geometry("700x400")
+    buttonClose = tk.Button(window3, text = "Закрыть",  command = window3.destroy)  # Создание кнопок
     buttonClose.place(rely = 0.3, relx = 0.8, height = 20, width = 90)
     buttonClose.pack()
-    buttonQuest = tk.Button(window2, text = "Справка")
+    buttonQuest = tk.Button(window3, text = "Справка")
     buttonQuest.place(rely = 0.2, relx = 0.8, height = 20, width = 90)
-    buttonRead = tk.Button(window2, text = "Редактировать")
+    buttonRead = tk.Button(window3, text = "Редактировать")
     buttonRead.place(rely = 0.1, relx = 0.8, height = 20, width = 90)
-    activList = tk.Label(window2, text = "Список активов: ")
+    activList = tk.Label(window3, text = "Список активов: ")
     activList.pack(anchor = NW)
-    text = Text(window2 ,width=20, height=30)        #Создание многострочного поля ввода
+    text = Text(window3 ,width=20, height=30)        #Создание многострочного поля ввода
     text.pack(side=LEFT)
-    scroll = Scrollbar(window2, command=text.yview)        #Создание скролбара
+    scroll = Scrollbar(window3, command=text.yview)        #Создание скролбара
     scroll.pack(side = LEFT, fill = Y)
     text.config(yscrollcommand=scroll.set)
-    window2.mainloop()
+    window3.mainloop()
 
 def on_enter_frame(e):
     e.widget['background'] = 'grey40'
@@ -54,23 +70,7 @@ def on_enter_win(e):
 def on_leave_win(e):
     e.widget['background'] = 'grey20'
 
-button_frame = tk.Button(frame1, text = "Календарный план", bg='grey30', 
-    fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
-button_frame.place(rely = 0.03, relx = 0.3, height = 50, width = 200,)
-button_frame.bind('<Enter>', on_enter_frame)
-button_frame.bind('<Leave>', on_leave_frame)
 
-button_frame2 = tk.Button(frame1, text = "Ресурсы", bg='grey30', 
-    fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
-button_frame2.place(rely = 0.39, relx = 0.3, height = 50, width = 200)
-button_frame2.bind('<Enter>', on_enter_frame)
-button_frame2.bind('<Leave>', on_leave_frame)
-
-button_frame3 = tk.Button(frame1, text = "Список активов", bg='grey30', 
-    fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
-button_frame3.place(rely = 0.75, relx = 0.3, height = 50, width = 200)
-button_frame3.bind('<Enter>', on_enter_frame)
-button_frame3.bind('<Leave>', on_leave_frame)
 
 
 button1 = tk.Button(window, text = "Проект", bg='grey20', 
