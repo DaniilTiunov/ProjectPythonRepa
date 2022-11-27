@@ -41,7 +41,7 @@ def Plan():
     button_frame2.bind('<Leave>', on_leave_frame)
 
     button_frame3 = tk.Button(frame1, text = "Список активов", bg='grey30', 
-    fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
+    fg='white', activebackground="grey10", activeforeground="white", command = listActive)
     button_frame3.place(rely = 0.76, relx = 0.25, height = 50, width = 200)
     button_frame3.bind('<Enter>', on_enter_frame)
     button_frame3.bind('<Leave>', on_leave_frame)
@@ -103,7 +103,11 @@ def on_leave_win(e):
     e.widget['background'] = 'grey20'
 
 
-
+buttonBrowse = tk.Button(window, text = 'Обзор', bg='grey20', 
+fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
+buttonBrowse.place(rely = 0.8, relx = 0.8, height='35', width=120)
+buttonBrowse.bind('<Enter>', on_enter_win)
+buttonBrowse.bind('<Leave>', on_leave_win)
 
 button1 = tk.Button(window, text = "Проект", bg='grey20', 
     fg='white', activebackground="grey10", activeforeground="white", command = button_Click)            #FUCKING BUTTONS 
