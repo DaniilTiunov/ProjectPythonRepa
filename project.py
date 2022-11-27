@@ -1,9 +1,11 @@
 import pandas as pd
 import tkinter as tk
+import fileinput
+import numpy as np
 from tkinter import *
 from tkinter import filedialog, messagebox, ttk
 from tkinter.filedialog import asksaveasfilename
-import numpy as np
+from tkinter.filedialog import *
 from openpyxl import Workbook
 
 datatable = pd.read_excel('439_2frem.xls')
@@ -23,13 +25,11 @@ def button_Click():                     #Функция создания окн�
     window.title(Text)
     window.geometry("700x400")
 
-
-
 k = 0
 
 def Plan():
     button_frame = tk.Button(frame1, text = "Календарный план", bg='grey30', 
-    fg='white', activebackground="grey10", activeforeground="white", command = listActive)
+    fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
     button_frame.place(rely = 0.04, relx = 0.25, height = 50, width = 200,)
     button_frame.bind('<Enter>', on_enter_frame)
     button_frame.bind('<Leave>', on_leave_frame)
@@ -41,7 +41,7 @@ def Plan():
     button_frame2.bind('<Leave>', on_leave_frame)
 
     button_frame3 = tk.Button(frame1, text = "Список активов", bg='grey30', 
-    fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
+    fg='white', activebackground="grey10", activeforeground="white", command = listActive)
     button_frame3.place(rely = 0.76, relx = 0.25, height = 50, width = 200)
     button_frame3.bind('<Enter>', on_enter_frame)
     button_frame3.bind('<Leave>', on_leave_frame)
@@ -67,6 +67,14 @@ def listActive():
             output_file.write(text)
         window3.title(f"Work with - {filepath}")
 
+    def open_files():
+        op = askopenfilename()
+        print(op)
+        f = open(op, "r", encoding='utf-8')
+        content = f.read()
+        text_edit.delete(1.0,END)
+        text_edit.insert(END, content)
+
     window3 = Tk()
     window3.title(Text)
     window3.geometry("700x400")
@@ -77,7 +85,7 @@ def listActive():
     buttonQuest = tk.Button(window3, text = "Справка")
     buttonQuest.place(rely = 0.3, relx = 0.8, height = 20, width = 90)
     
-    buttonRead = tk.Button(window3, text = "Редактировать")
+    buttonRead = tk.Button(window3, text = "Редактировать", command = open_files)
     buttonRead.place(rely = 0.2, relx = 0.8, height = 20, width = 90)
 
     buttonRead = tk.Button(window3, text = "Cохранить", command = save_file)
