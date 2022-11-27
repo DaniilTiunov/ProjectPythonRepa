@@ -8,7 +8,6 @@ from tkinter.filedialog import asksaveasfilename
 from tkinter.filedialog import *
 from openpyxl import Workbook
 
-datatable = pd.read_excel('439_2frem.xls')
 
 window = tk.Tk()                                                 
 window.geometry("700x400")
@@ -45,6 +44,11 @@ def Plan():
     button_frame3.place(rely = 0.76, relx = 0.25, height = 50, width = 200)
     button_frame3.bind('<Enter>', on_enter_frame)
     button_frame3.bind('<Leave>', on_leave_frame)
+
+def browse():
+    tablaway = askopenfilename()
+    print(tablaway)
+    datatabla = pd.read_excel(tablaway)
 
 def buttonPlan():
     global k
@@ -121,7 +125,7 @@ def on_leave_win(e):
 
 
 buttonBrowse = tk.Button(window, text = 'Обзор', bg='grey20', 
-fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
+fg='white', activebackground="grey10", activeforeground="white", command = browse)
 buttonBrowse.place(rely = 0.8, relx = 0.8, height='35', width=120)
 buttonBrowse.bind('<Enter>', on_enter_win)
 buttonBrowse.bind('<Leave>', on_leave_win)
