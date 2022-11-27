@@ -14,7 +14,7 @@ window = tk.Tk()
 window.geometry("700x400")
 window.title('Приложение для расчета показателей инвестиционного анализа предприятия')
 window.resizable(False, False)
-window.config(bg='black', )                                       # отключает возможность растягивать окно как хочется
+window.config(bg='black', )                                       # отключает возможность растягивать окно к=ак хочется
 
 frame1 = tk.LabelFrame(window)  
 frame1.config(bg='grey20', )                                      # фрейм для создания ещё трёх кнопок :\
@@ -85,11 +85,11 @@ def listActive():
     buttonQuest = tk.Button(window3, text = "Справка")
     buttonQuest.place(rely = 0.3, relx = 0.8, height = 20, width = 90)
     
-    buttonRead = tk.Button(window3, text = "Редактировать", command = open_files)
-    buttonRead.place(rely = 0.2, relx = 0.8, height = 20, width = 90)
+    buttonRead = tk.Button(window3, text = "Редактировать список с пк", command = open_files)
+    buttonRead.place(rely = 0.2, relx = 0.8, height = 20, width = 200)
 
-    buttonRead = tk.Button(window3, text = "Cохранить", command = save_file)
-    buttonRead.place(rely = 0.1, relx = 0.8, height = 20, width = 90)
+    buttonRead = tk.Button(window3, text = "Cохранить список активов на пк", command = save_file)
+    buttonRead.place(rely = 0.1, relx = 0.8, height = 20, width = 200)
     
     activList = tk.Label(window3, text = "Список активов: ")
     activList.pack(anchor = NW)
@@ -100,6 +100,13 @@ def listActive():
     
     window3.mainloop()
     
+def calPlan():
+    window4 = Tk()
+    window4.title("Календарный план")
+    window4.geometry("700x400")
+    
+
+
 
 def on_enter_frame(e):
     e.widget['background'] = 'grey40'
