@@ -8,15 +8,14 @@ from tkinter.filedialog import asksaveasfilename
 from tkinter.filedialog import *
 from openpyxl import Workbook
 
-datatable = pd.read_excel('439_2frem.xls')
 
-window = tk.Tk()                                                 
+window = tk.Tk()
 window.geometry("700x400")
 window.title('Приложение для расчета показателей инвестиционного анализа предприятия')
 window.resizable(False, False)
 window.config(bg='black', )                                       # отключает возможность растягивать окно к=ак хочется
 
-frame1 = tk.LabelFrame(window)  
+frame1 = tk.LabelFrame(window)
 frame1.config(bg='grey20', )                                      # фрейм для создания ещё трёх кнопок :\
 frame1.place(height = 250, width = 370, rely = 0.03, relx = 0.45)
 
@@ -28,28 +27,33 @@ def button_Click():                     #Функция создания окн�
 k = 0
 
 def Plan():
-    button_frame = tk.Button(frame1, text = "Календарный план", bg='grey30', 
+    button_frame = tk.Button(frame1, text = "Календарный план", bg='grey30',
     fg='white', activebackground="grey10", activeforeground="white", command = calPlan)
     button_frame.place(rely = 0.04, relx = 0.25, height = 50, width = 200,)
     button_frame.bind('<Enter>', on_enter_frame)
     button_frame.bind('<Leave>', on_leave_frame)
 
-    button_frame2 = tk.Button(frame1, text = "Ресурсы", bg='grey30', 
+    button_frame2 = tk.Button(frame1, text = "Ресурсы", bg='grey30',
     fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
     button_frame2.place(rely = 0.4, relx = 0.25, height = 50, width = 200)
     button_frame2.bind('<Enter>', on_enter_frame)
     button_frame2.bind('<Leave>', on_leave_frame)
 
-    button_frame3 = tk.Button(frame1, text = "Список активов", bg='grey30', 
+    button_frame3 = tk.Button(frame1, text = "Список активов", bg='grey30',
     fg='white', activebackground="grey10", activeforeground="white", command = listActive)
     button_frame3.place(rely = 0.76, relx = 0.25, height = 50, width = 200)
     button_frame3.bind('<Enter>', on_enter_frame)
     button_frame3.bind('<Leave>', on_leave_frame)
 
+def browse():
+    tablaway = askopenfilename()
+    print(tablaway)
+    datatabla = pd.read_excel(tablaway)
+
 def buttonPlan():
     global k
     if (k==0):
-        k = 1 
+        k = 1
         Plan()
     elif(k==1):
         k=0
@@ -78,28 +82,28 @@ def listActive():
     window3 = Tk()
     window3.title(Text)
     window3.geometry("700x400")
-    
+
     buttonClose = tk.Button(window3, text = "Закрыть",  command = window3.destroy)  # Создание кнопок
     buttonClose.place(rely = 0.4, relx = 0.8, height = 20, width = 90)
-    
+
     buttonQuest = tk.Button(window3, text = "Справка")
     buttonQuest.place(rely = 0.3, relx = 0.8, height = 20, width = 90)
-    
+
     buttonRead = tk.Button(window3, text = "Редактировать список с пк", command = open_files)
     buttonRead.place(rely = 0.2, relx = 0.8, height = 20, width = 200)
 
     buttonRead = tk.Button(window3, text = "Cохранить список активов на пк", command = save_file)
     buttonRead.place(rely = 0.1, relx = 0.8, height = 20, width = 200)
-    
+
     activList = tk.Label(window3, text = "Список активов: ")
     activList.pack(anchor = NW)
-    
+
     text_edit = tk.Text(window3, width=20, height=30)        #Создание многострочного поля ввода
     text_edit.pack(side=LEFT)
-    
-    
+
+
     window3.mainloop()
-    
+
 def calPlan():
     window4 = Tk()
     window4.title("Календарный план")
@@ -111,12 +115,12 @@ def calPlan():
     tree.heading("name", text="Имя")
     tree.heading("age", text="Возраст")
     tree.heading("email", text="Email")
-    
+
     for person in people:
         tree.insert("", END, values=person)
- 
-    
- 
+
+
+
 
 
 def on_enter_frame(e):
@@ -129,8 +133,8 @@ def on_leave_win(e):
     e.widget['background'] = 'grey20'
 
 
-buttonBrowse = tk.Button(window, text = 'Обзор', bg='grey20', 
-fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
+buttonBrowse = tk.Button(window, text = 'Обзор', bg='grey20',
+fg='white', activebackground="grey10", activeforeground="white", command = browse)
 buttonBrowse.place(rely = 0.8, relx = 0.8, height='35', width=120)
 buttonBrowse.bind('<Enter>', on_enter_win)
 buttonBrowse.bind('<Leave>', on_leave_win)
