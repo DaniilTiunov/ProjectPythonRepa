@@ -28,7 +28,7 @@ k = 0
 
 def Plan():
     button_frame = tk.Button(frame1, text = "Календарный план", bg='grey30', 
-    fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
+    fg='white', activebackground="grey10", activeforeground="white", command = calPlan)
     button_frame.place(rely = 0.04, relx = 0.25, height = 50, width = 200,)
     button_frame.bind('<Enter>', on_enter_frame)
     button_frame.bind('<Leave>', on_leave_frame)
@@ -108,10 +108,19 @@ def calPlan():
     window4 = Tk()
     window4.title("Календарный план")
     window4.geometry("700x400")
-
+    people = [("govno"), "zalupa"]
+    columns = ("name", "age", "email")
+    tree = ttk.Treeview(columns=columns, show="headings")
+    tree.pack(fill=BOTH, expand=1)
+    tree.heading("name", text="Имя")
+    tree.heading("age", text="Возраст")
+    tree.heading("email", text="Email")
     
+    for person in people:
+        tree.insert("", END, values=person)
+ 
     
-
+ 
 
 
 def on_enter_frame(e):
