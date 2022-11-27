@@ -2,9 +2,9 @@ import pandas as pd
 import tkinter as tk
 from tkinter import *
 from tkinter import filedialog, messagebox, ttk
+from tkinter.filedialog import asksaveasfilename
 import numpy as np
 from openpyxl import Workbook
-
 
 datatable = pd.read_excel('439_2frem.xls')
 
@@ -23,9 +23,9 @@ def button_Click():                     #Функция создания окн�
     window.title(Text)
     window.geometry("700x400")
 
-k = 0
 
-def Plan():
+
+def buttonPlan():
     button_frame = tk.Button(frame1, text = "Календарный план", bg='grey30', 
     fg='white', activebackground="grey10", activeforeground="white", command = listActive)
     button_frame.place(rely = 0.03, relx = 0.3, height = 50, width = 200,)
@@ -42,37 +42,42 @@ def Plan():
     button_frame3.bind('<Enter>', on_enter_frame)
     button_frame3.bind('<Leave>', on_leave_frame)
 
-def buttonPlan():
-    global k
-    if (k==0):
-        k = 1 
-        Plan()
-    elif(k==1):
-        k=0
-        for widgets in frame1.winfo_children():
-            widgets.destroy()    
-
-
-
 def listActive():
+
+    def save_file():
+        filepath = asksaveasfilename(defaultextension = "txt", filetypes = [("Текстовые файлы", "*.txt")])
+        if not filepath:
+            return
+        with open(filepath, "w", encoding = "UTF-8") as output_file:
+            text = text_edit.get("1.0", tk.END)
+            output_file.write(text)
+        window3.title(f"Work with - {filepath}")
+
     window3 = Tk()
     window3.title(Text)
     window3.geometry("700x400")
+    
     buttonClose = tk.Button(window3, text = "Закрыть",  command = window3.destroy)  # Создание кнопок
-    buttonClose.place(rely = 0.3, relx = 0.8, height = 20, width = 90)
-    buttonClose.pack()
+    buttonClose.place(rely = 0.4, relx = 0.8, height = 20, width = 90)
+    
     buttonQuest = tk.Button(window3, text = "Справка")
-    buttonQuest.place(rely = 0.2, relx = 0.8, height = 20, width = 90)
+    buttonQuest.place(rely = 0.3, relx = 0.8, height = 20, width = 90)
+    
     buttonRead = tk.Button(window3, text = "Редактировать")
+    buttonRead.place(rely = 0.2, relx = 0.8, height = 20, width = 90)
+
+    buttonRead = tk.Button(window3, text = "Cохранить", command = save_file)
     buttonRead.place(rely = 0.1, relx = 0.8, height = 20, width = 90)
+    
     activList = tk.Label(window3, text = "Список активов: ")
     activList.pack(anchor = NW)
-    text = Text(window3 ,width=20, height=30)        #Создание многострочного поля ввода
-    text.pack(side=LEFT)
-    scroll = Scrollbar(window3, command=text.yview)        #Создание скролбара
-    scroll.pack(side = LEFT, fill = Y)
-    text.config(yscrollcommand=scroll.set)
+    
+    text_edit = tk.Text(window3, width=20, height=30)        #Создание многострочного поля ввода
+    text_edit.pack(side=LEFT)
+    
+    
     window3.mainloop()
+    
 
 def on_enter_frame(e):
     e.widget['background'] = 'grey40'
