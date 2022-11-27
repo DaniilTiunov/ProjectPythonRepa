@@ -24,7 +24,7 @@ def button_Click():                     #Функция создания окн�
     window.title(Text)
     window.geometry("700x400")
 
-k = 0
+keyplan = 0
 
 def Plan():
     button_frame = tk.Button(frame1, text = "Календарный план", bg='grey30',
@@ -51,12 +51,12 @@ def browse():
     datatabla = pd.read_excel(tablaway)
 
 def buttonPlan():
-    global k
-    if (k==0):
-        k = 1
+    global keyplan
+    if (keyplan==0):
+        keyplan = 1
         Plan()
-    elif(k==1):
-        k=0
+    elif(keyplan==1):
+        keyplan=0
         for widgets in frame1.winfo_children():
             widgets.destroy()
 
