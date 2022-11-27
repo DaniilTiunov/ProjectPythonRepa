@@ -25,22 +25,36 @@ def button_Click():                     #Функция создания окн�
 
 
 
-def buttonPlan():
+k = 0
+
+def Plan():
     button_frame = tk.Button(frame1, text = "Календарный план", bg='grey30', 
-    fg='white', activebackground="grey10", activeforeground="white", command = listActive)
-    button_frame.place(rely = 0.03, relx = 0.3, height = 50, width = 200,)
+    fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
+    button_frame.place(rely = 0.04, relx = 0.25, height = 50, width = 200,)
     button_frame.bind('<Enter>', on_enter_frame)
     button_frame.bind('<Leave>', on_leave_frame)
+
     button_frame2 = tk.Button(frame1, text = "Ресурсы", bg='grey30', 
     fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
-    button_frame2.place(rely = 0.39, relx = 0.3, height = 50, width = 200)
+    button_frame2.place(rely = 0.4, relx = 0.25, height = 50, width = 200)
     button_frame2.bind('<Enter>', on_enter_frame)
     button_frame2.bind('<Leave>', on_leave_frame)
+
     button_frame3 = tk.Button(frame1, text = "Список активов", bg='grey30', 
     fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
-    button_frame3.place(rely = 0.75, relx = 0.3, height = 50, width = 200)
+    button_frame3.place(rely = 0.76, relx = 0.25, height = 50, width = 200)
     button_frame3.bind('<Enter>', on_enter_frame)
     button_frame3.bind('<Leave>', on_leave_frame)
+
+def buttonPlan():
+    global k
+    if (k==0):
+        k = 1 
+        Plan()
+    elif(k==1):
+        k=0
+        for widgets in frame1.winfo_children():
+            widgets.destroy()
 
 def listActive():
 
