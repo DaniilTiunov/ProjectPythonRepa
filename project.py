@@ -192,7 +192,7 @@ button9 = tk.Button(window, text = "Актуализация", bg='grey20',
     fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
 button9.place(rely = 0.84, relx = 0.01, height='35', width=300)   
 button9.bind('<Enter>', on_enter_win)
-button9.bind('<Leave>', on_leave_win)                                               #конец кнопок :)
+button9.bind('<Leave>', on_leave_win)                                               #конец кнопок :)python
 
 
 window.mainloop()
