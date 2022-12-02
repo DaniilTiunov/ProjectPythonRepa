@@ -151,7 +151,7 @@ button2.place(rely = 0.14, relx = 0.01, height='35', width=300)
 button2.bind('<Enter>', on_enter_win)
 button2.bind('<Leave>', on_leave_win)
 
-button3 = tk.Button(window, text = "Окржуение", bg='grey20', 
+button3 = tk.Button(window, text = "Окружение", bg='grey20', 
     fg='white', activebackground="grey10", activeforeground="white", command = button_Click)
 button3.place(rely = 0.24, relx = 0.01, height='35', width=300)
 button3.bind('<Enter>', on_enter_win)
