@@ -6,7 +6,6 @@ from tkinter import *
 from tkinter import filedialog, messagebox, ttk
 from tkinter.filedialog import asksaveasfilename
 from tkinter.filedialog import *
-from openpyxl import Workbook
 
 
 window = tk.Tk()
