@@ -1,0 +1,5 @@
+https://www.pysimplegui.org/en/stable/
+https://translated.turbopages.org/proxy_u/en-ru.ru.b436baaf-639453f4-0870ad56-74722d776562/https/github.com/PySimpleGUI/PySimpleGUI/blob/master/docs/readme.md
+https://realpython.com/pysimplegui-python/
+https://pythobyte.com/a-brief-intro-to-pysimplegui-3e0a8ea4/
+https://russianblogs.com/article/11251103285/
